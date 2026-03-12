@@ -5,7 +5,8 @@
 | Sesion | Estado |
 |---|---|
 | 1 | Completada (2026-03-11) |
-| 2-13 | Pendiente |
+| 2 | Completada (2026-03-11) |
+| 3-13 | Pendiente |
 
 ---
 
