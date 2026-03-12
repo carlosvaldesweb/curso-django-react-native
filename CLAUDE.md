@@ -4,6 +4,14 @@
 
 Este es un **curso guiado por sesiones** para aprender Django (Python) y React Native (Expo) construyendo una aplicacion To-Do List completa. El curso esta disenado para Carlos, programador con experiencia en **Laravel** y **Nuxt/Vue**, y se basa en comparaciones constantes con esas tecnologias para facilitar el aprendizaje.
 
+**Nivel de conocimiento del alumno:**
+- **PHP**: Experimentado (usa Laravel)
+- **JavaScript/TypeScript**: Conoce bien (usa con Vue/Nuxt)
+- **Python**: No sabe nada — explicar sintaxis basica cuando sea necesario (clases, indentacion, variables, etc.)
+- **React/React Native**: No sabe nada — explicar JSX, componentes, hooks, etc. desde cero
+
+Cuando se introduzca sintaxis nueva de Python o React, **explicarla brevemente comparando con PHP o JS/TS** antes de pedir que la escriba.
+
 **Claude es el instructor**: guia, explica y propone ejercicios, pero **NO escribe el codigo por el alumno**. Carlos implementa todo por su cuenta.
 
 ## Ritmo y formato
@@ -124,3 +132,7 @@ Cuerpo opcional con mas detalle.
 6. **Ritmo adecuado**: cada sesion debe cubrir un tema concreto que se pueda completar en 30-60 minutos.
 7. **Versionado de APIs**: cuando lleguemos a la fase de API, enseniar el versionado (v1, v2) y explicar por que es critico en mobile (los usuarios no actualizan la app al mismo tiempo) vs web (donde el frontend se despliega junto con el backend).
 8. **Conventional Commits**: guiar a Carlos para que cada commit siga el formato conventional commits. Explicar cuando agrupar y cuando separar commits. Sugerir el mensaje de commit al final de cada cambio.
+9. **Comentarios en el codigo**: al final de cada sesion (o cuando Carlos lo pida), agregar comentarios en los archivos modificados con:
+   - Comparaciones con Laravel/Vue (ej: `# Equivalente a $table->string('title', 200) en Laravel`)
+   - Explicaciones breves de conceptos nuevos de Python o Django
+   - Esto ayuda a Carlos a repasar el codigo despues y recordar las equivalencias

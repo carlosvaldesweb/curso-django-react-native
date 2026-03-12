@@ -6,7 +6,8 @@
 |---|---|
 | 1 | Completada (2026-03-11) |
 | 2 | Completada (2026-03-11) |
-| 3-13 | Pendiente |
+| 3 | Completada (2026-03-11) |
+| 4-13 | Pendiente |
 
 ---
 
