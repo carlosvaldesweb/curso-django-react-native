@@ -73,10 +73,24 @@ WSGI_APPLICATION = 'todoproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# Equivalente al bloque DB_* en el .env de Laravel:
+# DB_CONNECTION=pgsql, DB_HOST=127.0.0.1, DB_PORT=5432, DB_DATABASE=tododb, DB_USERNAME=postgres
+# En Django la configuracion va directamente aqui en settings.py.
+# En una sesion futura lo moveremos a variables de entorno con python-decouple o django-environ.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # django.db.backends.postgresql usa psycopg (v3) si esta instalado, o psycopg2 como fallback
+        'ENGINE': 'django.db.backends.postgresql',
+        # Nombre de la base de datos (equivalente a DB_DATABASE en Laravel)
+        'NAME': 'tododb',
+        # Usuario de PostgreSQL (equivalente a DB_USERNAME)
+        'USER': 'postgres',
+        # Contrasena vacia porque DBngin no requiere password por defecto
+        'PASSWORD': '',
+        # Host — usamos IP en lugar de 'localhost' para forzar conexion TCP (no socket Unix)
+        'HOST': '127.0.0.1',
+        # Puerto personalizado de DBngin (el default de PostgreSQL es 5432)
+        'PORT': '54321',
     }
 }
 
