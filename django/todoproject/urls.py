@@ -15,8 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include  # include es equivalente al require de rutas en Laravel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Monta todas las URLs de tasks bajo el prefijo /api/
+    # Equivalente a Route::prefix('api')->group(base_path('routes/tasks.php')) en Laravel
+    path('api/', include('tasks.urls'))
 ]
