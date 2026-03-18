@@ -7,4 +7,4 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         # Meta es una clase interna de configuracion, similar a los $fillable/$casts en un modelo Laravel
         model = Task        # El modelo que serializa
-        fields = '__all__'  # Expone todos los campos; se puede cambiar a una lista: ['id', 'title', 'completed']
+        fields = ['id', 'title', 'description', 'completed', 'created_at', 'updated_at']  # Expone todos los campos en la vista para editar y mostrar, incluyendo id y timestamps
