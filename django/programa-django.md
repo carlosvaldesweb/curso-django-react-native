@@ -2,12 +2,18 @@
 
 ## Progreso
 
-| Sesion | Estado |
-|---|---|
-| 1 | Completada (2026-03-11) |
-| 2 | Completada (2026-03-11) |
-| 3 | Completada (2026-03-11) |
-| 4-13 | Pendiente |
+| Sesion | Tema | Estado |
+|---|---|---|
+| 1 | Instalacion de Python y entorno de desarrollo | ✅ Completada (2026-03-11) |
+| 2 | Crear proyecto Django y explorar la estructura | ✅ Completada (2026-03-11) |
+| 3 | Modelos y migraciones | ✅ Completada (2026-03-11) |
+| 4 | Django Admin | ✅ Completada |
+| 5 | Configurar PostgreSQL | ✅ Completada |
+| 6 | DRF: Serializers, Vistas, URLs y CRUD completo | ✅ Completada |
+| 7 | Versionado de API + Modelo User + ForeignKey | ✅ Completada (2026-03-18) |
+| 8 | JWT con simplejwt + Proteccion de endpoints | ✅ Completada (2026-03-18) |
+| 9 | Endpoint de registro de usuarios | ⏳ Pendiente |
+| 10 | Testing | ⏳ Pendiente |
 
 ---
 
@@ -104,128 +110,81 @@ Django Admin viene **incluido gratis**. En Laravel necesitas instalar paquetes c
 
 ---
 
-## Sesion 6: Django REST Framework - Serializers
+## Sesion 6: Django REST Framework - Serializers, Vistas, URLs y CRUD
 
 **Objetivos:**
 - Instalar Django REST Framework (DRF)
 - Entender que son los Serializers
 - Crear un serializer para el modelo `Task`
-- Entender la diferencia entre `Serializer` y `ModelSerializer`
-
-**Comparacion con Laravel:**
-| DRF Serializers | Laravel API Resources |
-|---|---|
-| `serializers.py` | `app/Http/Resources/TaskResource.php` |
-| `ModelSerializer` | `JsonResource` |
-| Valida datos de entrada Y formatea salida | Solo formatea salida (validacion va en FormRequest) |
-| `serializer.is_valid()` | `$request->validate()` |
-
----
-
-## Sesion 7: Vistas y URLs para API
-
-**Objetivos:**
-- Crear vistas basadas en clases (APIView, ViewSet)
-- Configurar URLs para la API
-- Entender los diferentes tipos de vistas en DRF
-- Probar los endpoints con el navegador de DRF
+- Crear vistas con `ModelViewSet`
+- Configurar URLs con el Router de DRF
+- Probar el CRUD completo (GET, POST, PUT, PATCH, DELETE)
 
 **Comparacion con Laravel:**
 | DRF | Laravel |
 |---|---|
-| `views.py` | `app/Http/Controllers/` |
-| `urls.py` + `router` | `routes/api.php` |
-| `APIView` | Controller con metodos individuales |
-| `ViewSet` | Resource Controller (`--resource`) |
+| `serializers.py` | `app/Http/Resources/TaskResource.php` |
+| `ModelSerializer` | `JsonResource` |
 | `ModelViewSet` | Resource Controller + model binding |
+| `urls.py` + `router` | `routes/api.php` |
 | Navegador DRF (interfaz web) | Postman / Insomnia (externo) |
 
 ---
 
-## Sesion 8: CRUD de tareas via API
+## Sesion 7: Versionado de API + Modelo User + ForeignKey
 
 **Objetivos:**
-- Implementar el CRUD completo con un `ModelViewSet`
-- Listar tareas (GET)
-- Crear tarea (POST)
-- Ver detalle de tarea (GET /:id)
-- Actualizar tarea (PUT/PATCH /:id)
-- Eliminar tarea (DELETE /:id)
-- Probar todos los endpoints
-
----
-
-## Sesion 9: Modelo User y autenticacion
-
-**Objetivos:**
-- Entender el modelo User de Django (viene incluido)
-- Crear endpoint de registro de usuarios
-- Asociar tareas a usuarios (ForeignKey)
-- Actualizar migraciones
-
-**Comparacion con Laravel:**
-| Django | Laravel |
-|---|---|
-| `django.contrib.auth.models.User` (incluido) | `App\Models\User` (incluido) |
-| `ForeignKey(User)` | `$table->foreignId('user_id')` |
-| `create_user()` | `User::create()` con Hash |
-
----
-
-## Sesion 10: JWT con simplejwt
-
-**Objetivos:**
-- Instalar `djangorestframework-simplejwt`
-- Configurar endpoints para obtener y refrescar tokens
-- Entender access token vs refresh token
-- Probar el flujo de autenticacion
-
-**Comparacion con Laravel:**
-| Django + simplejwt | Laravel + Sanctum |
-|---|---|
-| JWT (stateless) | Tokens en BD (stateful) o JWT |
-| Access + Refresh tokens | Token simple o JWT |
-| `TokenObtainPairView` | `Auth::attempt()` + `createToken()` |
-| Token en header `Authorization: Bearer ...` | Token en header `Authorization: Bearer ...` |
-
----
-
-## Sesion 11: Permisos y proteccion de endpoints
-
-**Objetivos:**
-- Proteger endpoints para que solo usuarios autenticados accedan
-- Filtrar tareas: cada usuario solo ve las suyas
-- Entender `IsAuthenticated`, `IsOwner` (permisos custom)
-- Probar acceso con y sin token
-
-**Comparacion con Laravel:**
-| Django DRF | Laravel |
-|---|---|
-| `permission_classes` | Middleware `auth:sanctum` |
-| `IsAuthenticated` | `auth` middleware |
-| Custom permissions | Gates y Policies |
-| `get_queryset()` filtrado | Scopes en Eloquent |
-
----
-
-## Sesion 12: Versionado de APIs
-
-**Objetivos:**
+- Versionar la API bajo `/api/v1/`
 - Entender por que el versionado es critico en apps mobile
-- Diferencia con web: en web el frontend se despliega junto con el backend, en mobile los usuarios pueden tener versiones antiguas de la app
-- Estrategias de versionado: URL path (`/api/v1/`), headers, query params
-- Implementar versionado por URL en DRF
-- Organizar el codigo para multiples versiones
+- Asociar tareas a usuarios con `ForeignKey`
+- Filtrar tareas por usuario en `get_queryset`
+- Excluir el campo `user` del serializer
 
 **Nota importante:** En Laravel para web, casi nunca versionas la API porque el frontend (Blade/Nuxt) se actualiza al mismo tiempo. En mobile, es **obligatorio** porque no controlas cuando el usuario actualiza la app.
 
 ---
 
-## Sesion 13: Testing
+## Sesion 8: JWT con simplejwt + Proteccion de endpoints
+
+**Objetivos:**
+- Instalar `djangorestframework-simplejwt`
+- Configurar endpoints para obtener y refrescar tokens
+- Entender access token vs refresh token
+- Proteger endpoints con `IsAuthenticated`
+- Verificar que un usuario no puede acceder a tareas de otro
+
+**Comparacion con Laravel:**
+| Django + simplejwt | Laravel + Sanctum |
+|---|---|
+| JWT stateless — token NO vive en BD | Tokens stateful — viven en BD |
+| Access + Refresh tokens | Token simple o JWT |
+| `TokenObtainPairView` | `Auth::attempt()` + `createToken()` |
+| `permission_classes = [IsAuthenticated]` | Middleware `auth:sanctum` |
+| `get_queryset()` filtrado por usuario | Scopes en Eloquent |
+
+---
+
+## Sesion 9: Endpoint de registro de usuarios
+
+**Objetivos:**
+- Crear `POST /api/v1/auth/register/` sin autenticacion requerida
+- Crear un serializer para registro (username, email, password)
+- Hashear la contrasena correctamente con `create_user()`
+- Devolver tokens JWT directamente al registrarse
+
+**Comparacion con Laravel:**
+| Django | Laravel |
+|---|---|
+| `create_user()` | `User::create()` con `Hash::make()` |
+| `AllowAny` permission | Sin middleware `auth` en la ruta |
+
+---
+
+## Sesion 10: Testing
 
 **Objetivos:**
 - Escribir tests para los modelos
-- Escribir tests para los endpoints de la API
+- Escribir tests para los endpoints de la API (con y sin token)
 - Ejecutar tests con `python manage.py test`
 - Entender `TestCase` y `APITestCase`
 
