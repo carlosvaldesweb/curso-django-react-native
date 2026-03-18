@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # En Laravel: app/Models/Task.php + migration create_tasks_table
 # En Django el modelo Y la estructura de la tabla se definen juntos aqui
@@ -13,7 +14,7 @@ class Task(models.Model):
     completed = models.BooleanField(default=False)
     # ForeignKey = $table->foreignId('user_id')->constrained()->onDelete('cascade')
     # related_name='tasks' permite acceder a las tareas de un usuario con user.tasks (equivalente a hasMany en Laravel)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
     # auto_now_add=True = se asigna solo al crear (como created_at en Eloquent)
     created_at = models.DateTimeField(auto_now_add=True)
     # auto_now=True = se actualiza cada vez que se guarda (como updated_at en Eloquent)
