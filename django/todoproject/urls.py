@@ -40,7 +40,7 @@ urlpatterns = [
     #   Login (obtener tokens):
     #     curl -X POST http://localhost:8000/api/v1/auth/token/ \
     #       -H "Content-Type: application/json" \
-    #       -d '{"username": "carlosvaldes", "password": "password"}'
+    #       -d '{"email": "carlos@test.com", "password": "123456"}'
     #
     #   Usar el access token en una petición:
     #     curl http://localhost:8000/api/v1/tasks/ \
@@ -50,6 +50,13 @@ urlpatterns = [
     #     curl -X POST http://localhost:8000/api/v1/auth/token/refresh/ \
     #       -H "Content-Type: application/json" \
     #       -d '{"refresh": "<refresh_token>"}'
+    # POST /api/v1/auth/token/         → login con email+password, devuelve access+refresh
+    # TokenObtainPairView es la vista de simplejwt que maneja el login — no necesitamos escribirla.
     path('api/v1/auth/token/', TokenObtainPairView.as_view()),
+    # POST /api/v1/auth/token/refresh/ → manda refresh token, devuelve nuevo access token
     path('api/v1/auth/token/refresh/', TokenRefreshView.as_view()),
+
+    # Rutas personalizadas de auth (registro, perfil, etc.) definidas en users/urls.py
+    # Equivalente a require base_path('routes/auth.php') en Laravel
+    path('api/v1/auth/', include('users.urls')),
 ]
