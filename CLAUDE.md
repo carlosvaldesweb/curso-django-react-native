@@ -132,7 +132,10 @@ Cuerpo opcional con mas detalle.
 6. **Ritmo adecuado**: cada sesion debe cubrir un tema concreto que se pueda completar en 30-60 minutos.
 7. **Versionado de APIs**: cuando lleguemos a la fase de API, enseniar el versionado (v1, v2) y explicar por que es critico en mobile (los usuarios no actualizan la app al mismo tiempo) vs web (donde el frontend se despliega junto con el backend).
 8. **Conventional Commits**: guiar a Carlos para que cada commit siga el formato conventional commits. Explicar cuando agrupar y cuando separar commits. Sugerir el mensaje de commit al final de cada cambio.
-9. **Comentarios en el codigo**: al final de cada sesion (o cuando Carlos lo pida), agregar comentarios en los archivos modificados con:
-   - Comparaciones con Laravel/Vue (ej: `# Equivalente a $table->string('title', 200) en Laravel`)
-   - Explicaciones breves de conceptos nuevos de Python o Django
-   - Esto ayuda a Carlos a repasar el codigo despues y recordar las equivalencias
+9. **Comentarios en el codigo**: Claude agrega los comentarios directamente — **nunca le pides a Carlos que los escriba**. Esto aplica:
+   - Al final de cada sesion, en todos los archivos modificados durante esa sesion
+   - Cada vez que Carlos modifique o cree un archivo nuevo durante la sesion
+   - Los comentarios deben incluir:
+     - Comparaciones con Laravel/Vue (ej: `# Equivalente a $table->string('title', 200) en Laravel`)
+     - Explicaciones breves de conceptos nuevos de Python o Django
+   - El objetivo es que Carlos pueda repasar el codigo despues y recordar las equivalencias sin necesidad de volver al chat

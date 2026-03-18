@@ -19,7 +19,7 @@ from django.urls import path, include  # include es equivalente al require de ru
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Monta todas las URLs de tasks bajo el prefijo /api/
-    # Equivalente a Route::prefix('api')->group(base_path('routes/tasks.php')) en Laravel
-    path('api/', include('tasks.urls'))
+    # Monta todas las URLs de tasks bajo el prefijo /api/v1/
+    # Equivalente a Route::prefix('api/v1')->group(base_path('routes/tasks.php')) en Laravel
+    path('api/v1/', include('tasks.urls'))
 ]
